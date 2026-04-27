@@ -1,0 +1,144 @@
+/* components/LoadingScreen.css */
+
+/* ---------- Root overlay ---------- */
+.loading-root {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+/* Triggered when fadingOut = true in JSX */
+.loading-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- CRT scanlines overlay ---------- */
+.loading-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- Terminal window ---------- */
+.loading-terminal {
+  position: relative;
+  z-index: 2;
+  width: min(520px, 90vw);
+  padding: 32px 36px 28px;
+  border: 1px solid rgba(0, 255, 65, 0.35);
+  border-radius: 4px;
+  background: rgba(0, 8, 0, 0.9);
+  box-shadow:
+    0 0 60px rgba(0, 255, 65, 0.08),
+    inset 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Terminal header ---------- */
+.loading-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.loading-bracket {
+  color: rgba(0, 255, 65, 0.4);
+}
+
+.loading-sys {
+  color: #00ff41;
+  font-weight: 700;
+}
+
+.loading-ver {
+  color: rgba(0, 255, 65, 0.4);
+  margin-left: auto;
+  font-size: 0.65rem;
+}
+
+.loading-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 255, 65, 0.5),
+    rgba(0, 255, 65, 0.1),
+    transparent
+  );
+  margin-bottom: 20px;
+}
+
+/* ---------- Individual boot lines ---------- */
+.loading-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.78rem, 2vw, 0.88rem);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: lineAppear 0.15s ease forwards;
+}
+
+@keyframes lineAppear {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Completed lines are slightly dimmer */
+.loading-line--done .loading-line-text {
+  color: rgba(0, 255, 65, 0.55);
+}
+
+/* The most-recent line is bright */
+.loading-line--active .loading-line-text {
+  color: #00ff41;
+}
+
+/* ---------- Blinking cursor ---------- */
+.loading-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: #00ff41;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ---------- Progress bar ---------- */
+.loading-progress-wrap {
+  margin-top: 24px;
+  height: 2px;
+  background: rgba(0, 255, 65, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #00cc33, #00ff41);
+  box-shadow: 0 0 8px #00ff41;
+  border-radius: 1px;
+}

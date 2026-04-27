@@ -1,0 +1,203 @@
+/* ============================================================
+   App.css — Global Design System
+   Dark terminal aesthetic: black + neon green (#00ff41)
+   Fonts: Orbitron (display), JetBrains Mono (code), Rajdhani (body)
+   ============================================================ */
+
+/* ---------- CSS Variables (Design Tokens) ---------- */
+:root {
+  --bg:           #000000;
+  --bg-surface:   #080808;
+  --bg-card:      #0d0d0d;
+  --bg-hover:     #141414;
+
+  --green:        #00ff41;
+  --green-dim:    #00cc33;
+  --green-dark:   #007a1f;
+  --green-glow:   rgba(0, 255, 65, 0.25);
+  --green-ghost:  rgba(0, 255, 65, 0.07);
+  --green-border: rgba(0, 255, 65, 0.2);
+  --green-border-hover: rgba(0, 255, 65, 0.6);
+
+  --text:         #d4d4d4;
+  --text-dim:     #666666;
+  --text-muted:   #444444;
+
+  --font-display: 'Orbitron', monospace;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-body:    'Rajdhani', sans-serif;
+
+  --radius:       4px;
+  --radius-lg:    8px;
+  --transition:   0.25s ease;
+  --glow-sm:      0 0 10px rgba(0, 255, 65, 0.3);
+  --glow-md:      0 0 20px rgba(0, 255, 65, 0.4), 0 0 40px rgba(0, 255, 65, 0.15);
+  --nav-height:   64px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none; /* hidden for custom cursor */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide default cursor site-wide (custom cursor handles it) */
+*, a, button {
+  cursor: none !important;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--green-dim); }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--green-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* ---------- Page Wrapper ---------- */
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+/* ---------- Section ---------- */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ---------- Section Heading ---------- */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--green-border), transparent);
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 48px;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--green-border);
+  background: transparent;
+  color: var(--green);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn:hover {
+  border-color: var(--green);
+  background: var(--green-ghost);
+  box-shadow: var(--glow-sm);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--green-ghost);
+  border-color: var(--green);
+}
+.btn-primary:hover {
+  background: rgba(0, 255, 65, 0.15);
+  box-shadow: var(--glow-md);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all var(--transition);
+}
+.card:hover {
+  border-color: var(--green-border-hover);
+  background: var(--bg-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 255, 65, 0.1);
+}
+
+/* ---------- Tag / Chip ---------- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--green);
+  background: var(--green-ghost);
+  border: 1px solid var(--green-border);
+  border-radius: 2px;
+  padding: 3px 10px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* ---------- Fade In Animation ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ---------- Scanline Texture Overlay ---------- */
+@keyframes scanline {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .section { padding: 60px 20px; }
+}

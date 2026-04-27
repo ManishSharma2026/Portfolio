@@ -1,0 +1,116 @@
+/* pages/Skills.css */
+
+.skills-page { animation: fadeInUp 0.6s ease; }
+
+/* ---------- Filter Tabs ---------- */
+.skills-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.skills-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  transition: all 0.2s;
+}
+.skills-filter-btn:hover {
+  color: var(--green);
+  border-color: var(--green-border-hover);
+  background: var(--green-ghost);
+}
+.skills-filter-btn--active {
+  color: var(--green);
+  border-color: var(--green);
+  background: var(--green-ghost);
+  box-shadow: var(--glow-sm);
+}
+
+/* ---------- Skills Grid ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Skill Card ---------- */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.skill-icon {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--green);
+  min-width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-ghost);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius);
+  width: 40px;
+  height: 40px;
+}
+
+.skill-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.skill-level-pct {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--green);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Proficiency bar */
+.skill-bar-track {
+  height: 3px;
+  background: rgba(0, 255, 65, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--green-dim), var(--green));
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.skill-projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

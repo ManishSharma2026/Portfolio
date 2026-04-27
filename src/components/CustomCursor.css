@@ -1,0 +1,55 @@
+/* components/CustomCursor.css */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  /* transform is applied via JS; translate(-50%,-50%) centers them on cursor */
+  will-change: transform;
+}
+
+/* Small precise dot */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #00ff41;
+  border-radius: 50%;
+  margin-top: -3px;
+  margin-left: -3px;
+  box-shadow: 0 0 6px #00ff41;
+  transition: width 0.15s, height 0.15s, margin 0.15s;
+}
+
+/* Outer ring */
+.cursor-ring {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(0, 255, 65, 0.6);
+  border-radius: 50%;
+  margin-top: -14px;
+  margin-left: -14px;
+  transition:
+    width  0.2s ease,
+    height 0.2s ease,
+    margin 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Hover state — ring expands, changes color */
+.cursor-ring--hover {
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  margin-left: -22px;
+  border-color: rgba(0, 255, 65, 1);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.3);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}

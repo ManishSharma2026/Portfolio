@@ -1,0 +1,197 @@
+/* pages/Home.css */
+
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid background lines */
+.home-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ---------- Content Layout ---------- */
+.home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+/* ---------- Text Side ---------- */
+.home-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.home-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 0 40px rgba(255,255,255,0.05);
+}
+
+.home-role {
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+  color: var(--green);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.home-role-prefix { opacity: 0.5; }
+.home-role-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: var(--green);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 0.9s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.home-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+/* CTA buttons row */
+.home-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+.btn-icon { font-size: 0.9em; }
+
+/* Stats row */
+.home-stats {
+  display: flex;
+  gap: 32px;
+}
+.home-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.home-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--green);
+}
+.home-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- Terminal Panel ---------- */
+.home-terminal {
+  background: #050e05;
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.07);
+  animation: fadeInUp 0.9s 0.2s ease both;
+}
+
+.home-terminal-header {
+  background: #0a0a0a;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--green-border);
+}
+
+.home-terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.home-terminal-dot--red    { background: #ff5f57; }
+.home-terminal-dot--yellow { background: #febc2e; }
+.home-terminal-dot--green  { background: #28c840; }
+
+.home-terminal-filename {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.home-terminal-code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: #a8d8a8;
+  padding: 20px 24px;
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .home-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .home-terminal { order: -1; }
+}
+
+@media (max-width: 480px) {
+  .home-stats { gap: 20px; }
+  .home-buttons .btn { flex: 1; justify-content: center; min-width: 120px; }
+}
