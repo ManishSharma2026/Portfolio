@@ -10,14 +10,15 @@ import './Home.css'
 
 // ── Replace these values with your real info ──────────────────
 const INFO = {
-  name:       'Manish Sharma',
-  role:       'Applied Computing Student',
-  university: 'University of Washington Bothell',
-  tagline:    'Building full-stack systems at the intersection of AI, backend engineering, and real-world product impact.',
-  github:     'https://github.com/manishsharma0826',
-  linkedin:   'https://linkedin.com/in/manishsharma0826',
-  resume:     '/resume.pdf',
-}
+  name: "Manish Sharma",
+  role: "Applied Computing Student",
+  university: "University of Washington Bothell",
+  tagline:
+    "Building full-stack systems at the intersection of AI, backend engineering, and real-world product impact.",
+  github: "https://github.com/ManishSharma2026",
+  linkedin: "https://linkedin.com/in/manishsharma0826",
+  resume: "/resume.pdf",
+};
 // ──────────────────────────────────────────────────────────────
 
 export default function Home() {
