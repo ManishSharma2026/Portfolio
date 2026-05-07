@@ -5,8 +5,8 @@
 // - CTA buttons: Resume, Projects, GitHub, LinkedIn
 // - Decorative terminal code block on the right
 
-import { Link } from 'react-router-dom'
-import './Home.css'
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 // ── Replace these values with your real info ──────────────────
 const INFO = {
@@ -41,7 +41,9 @@ export default function Home() {
           {/* Animated subtitle */}
           <p className="home-role">
             <span className="home-role-prefix">&gt; </span>
-            <span className="home-role-text">{INFO.role} @ {INFO.university}</span>
+            <span className="home-role-text">
+              {INFO.role} @ {INFO.university}
+            </span>
             <span className="home-role-cursor" aria-hidden="true" />
           </p>
 
@@ -50,29 +52,43 @@ export default function Home() {
 
           {/* CTA buttons */}
           <div className="home-buttons">
-            <a href={INFO.resume} target="_blank" rel="noreferrer" className="btn btn-primary">
+            <a
+              href={INFO.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
               <span className="btn-icon">↓</span> Resume
             </a>
             <Link to="/projects" className="btn">
               Projects
             </Link>
-            <a href={INFO.github} target="_blank" rel="noreferrer" className="btn">
+            <a
+              href={INFO.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn"
+            >
               GitHub
             </a>
-            <a href={INFO.linkedin} target="_blank" rel="noreferrer" className="btn">
+            <a
+              href={INFO.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="btn"
+            >
               LinkedIn
             </a>
           </div>
 
           {/* Quick stats row */}
-         
         </div>
 
         {/* Decorative terminal code block */}
         <div className="home-terminal" aria-hidden="true">
           <div className="home-terminal-header">
-            <span className="home-terminal-dot home-terminal-dot--red"   />
-            <span className="home-terminal-dot home-terminal-dot--yellow"/>
+            <span className="home-terminal-dot home-terminal-dot--red" />
+            <span className="home-terminal-dot home-terminal-dot--yellow" />
             <span className="home-terminal-dot home-terminal-dot--green" />
             <span className="home-terminal-filename">profile.json</span>
           </div>
@@ -95,5 +111,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }
